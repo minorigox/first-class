@@ -1,5 +1,6 @@
 <h1>{{ title }}</h1>
-<app-photo url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeTm8ZtFAliBMdrbKpVcRlOx7YPSKGCEakIQ&s"
-    description="Todo Poderoso"></app-photo>
-<app-photo url="https://res.cloudinary.com/idemo/image/fetch/c_fill,f_webp,q_auto:good/https://www.jornaldorap.com.br/wp-content/uploads/2024/09/depay.jpg"
-    description="Memphis"></app-photo>
+<app-photo
+    *ngFor="let photo of photos"
+    [url]="photo.url"
+    [description]="photo.description">
+</app-photo>
