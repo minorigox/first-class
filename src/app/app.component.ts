@@ -3,6 +3,7 @@ import { PhotoComponent } from './photos/photo/photo.component';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Photo } from './photos/photo/photo.model';
+import { PhotoService } from './photos/photo/photo.service';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +16,9 @@ import { Photo } from './photos/photo/photo.model';
 export class AppComponent {
   title = 'first-class';
   photos: Photo[] = [];
-  constructor(http: HttpClient) {
-    http
-      .get<Photo[]>('http://localhost:3000/flavio/photos')
-      .subscribe(
-        photos => this.photos = photos,
-        err => console.log(err));
+  constructor(photoService: PhotoService) {
+    photoService
+      .listFromUser('flavio')
+      .subscribe(photos => this.photos = photos);
   }
 }
