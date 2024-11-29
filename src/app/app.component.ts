@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PhotoComponent } from './photos/photo/photo.component';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { Photo } from './photos/photo/photo.model';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,15 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   title = 'first-class';
-  photos: Object[] = [];
+  photos: Photo[] = [];
   constructor(http: HttpClient) {
     http
-      .get<Object[]>('http://localhost:3000/flavio/photos')
-      .subscribe((photos) => (this.photos = photos));
+      .get<Photo[]>('http://localhost:3000/flavio/photos')
+      .subscribe(
+        photos => this.photos = photos,
+        err => console.log(err));
   }
 }
