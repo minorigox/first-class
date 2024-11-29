@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PhotoComponent } from './photos/photo/photo.component';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Photo } from './photos/photo/photo.model';
+import { Photo } from './photos/photo/photo';
 import { PhotoService } from './photos/photo/photo.service';
 
 @Component({
